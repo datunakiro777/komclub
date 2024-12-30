@@ -1,13 +1,15 @@
 {% extends 'base.html' %}
-
+{% block head %}
+    <link href="static/css/style.css" rel="stylesheet" type="text/css">
+{% endblock %}
 {% block title %}
-Create an Account
+Log In
 {% endblock %}
 
 {% block body %}
     <form method='post' class="form-group">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit" class="btn btn-success">register</button>
+        <button type="submit" class="btn btn-success">LogIn</button>
     </form>
 {% endblock %}
