@@ -163,22 +163,22 @@ footer
                     color:#703cc8;
                 }
             </style>
-            <a href="#" class="logo"><span>Kom</span>Club</a>
+            <a href="/" class="logo"><span>Kom</span>Club</a>
         </li>
         <li class="l">
-            <a href="#" class="bt q nav-link">Home</a>
+            <a href="/" class="bt q nav-link">Home</a>
         </li>
         <li class="l">
-            <a href="#" class="bt q nav-link">Clubs</a>
+            <a href="/clubs" class="bt q nav-link">Clubs</a>
         </li>
         <li class="l">
-            <a href="#" class="bt q nav-link">My Clubs</a>
+            <a href="/my_clubs" class="bt q nav-link">My Clubs</a>
         </li>
     </ul>
     <ul class="right-nav">
       {% if user.is_authenticated %}
       <li class="l">
-        <a href="/register" class="bt al q nav-link">merabi</a>
+        <a href="" class=""><img src={{user.pfp}}></a>
       </li>
       {% else %}
         <li class="l">
@@ -192,15 +192,15 @@ footer
     </ul>
     
 </nav>
-<img src="static/images/image.jpg" class="banner">
+<img src="../../static/images/image.jpg" class="banner">
     {% block body %}
     {% endblock %}
     
   <footer>
     <a class="contact">Contact us</a>
     <div class="divider"></div>
-    <img class="appicon" src="static/images/instagram.png" href="#">
-    <img class="appicon" src="static/images/facebook.png" href="#">
+    <img class="appicon" src="../../static/images/instagram.png" href="#">
+    <img class="appicon" src="../../static/images/facebook.png" href="#">
   </footer>
 </body>
 </html>
