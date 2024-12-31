@@ -1,1 +1,99 @@
 {% extends 'base.html' %}
+{% block head %}
+{% endblock %}
+{% block title %}
+Home
+{% endblock %}
+
+{% block body %}
+<style>
+    article
+    {
+        display:flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .logo
+    {
+        display: block;
+        margin: 0 auto;
+        transition: filter 0.3s ease;
+    }
+    .logo:hover {
+        filter: brightness(1.2);
+    }
+    .container {
+    width: 50%;
+    color: rgb(0, 0, 0);
+    border-style: dashed;
+    text-align: center;
+    border-color: #703cc8;
+    border-width: 3px;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 5px;
+}
+.section {
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+.section-title {
+    font-size: 20px;
+    color: #703cc8;
+    margin-bottom: 10px;
+    font-weight: bold;
+    text-align: left;
+}
+
+.section p {
+    text-align: left;
+    line-height: 1.6;
+    font-size: 16px;
+}
+
+.logo-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.logo {
+    display: block;
+    margin: 0 auto;
+    transition: filter 0.3s ease;
+}
+
+.logo:hover {
+    filter: brightness(1.2);
+}
+
+</style>
+
+<article>
+    <div class="logo-container">
+        <img src="static/images/logo.png" class="logo">
+    </div>
+    <div class="container">
+        <div class="section">
+            <h2 class="section-title">მიზანი</h2>
+            <p>
+                ჩვენი პროექტი მიზნად ისახავს კომაროვის სკოლის კლუბების შესახებ ინფორმაციის ხელმისაწვდომობას და მათი აქტივობების შესახებ ცნობადობის ამაღლებას.
+            </p>
+        </div>
+        <div class="section">
+            <h2 class="section-title">პრობლემა</h2>
+            <p>
+                პრობლემა მდგომარეობს იმაში, რომ მოსწავლეებს და პოტენციურ კლუბის წევრებს ხშირად არ აქვთ საკმარისი ინფორმაცია, თუ რომელი კლუბები არსებობს, რა აქტივობებს სთავაზობენ ისინი, და როგორ შეუძლიათ შეუერთდნენ ამ კლუბებს.
+                ამის გამო, ბევრ მოსწავლეს შეიძლება გამოეპაროს შანსი ჩაერთონ მათთვის საინტერესო საქმიანობებში.
+            </p>
+        </div>
+        <div class="section">
+            <h2 class="section-title">გადაჭრის ხერხი</h2>
+            <p>
+                ჩვენი პროექტი გეგმავს ვებ-საიტის შექმნას, რომელზეც აიტვირთება ყველა კლუბის აღწერა, მათი საქმიანობის გეგმა, და განაცხადების პროცესი. ეს პლატფორმა უზრუნველყოფს მოსწავლეებს მარტივ და სწრაფ წვდომას მათთვის საინტერესო კლუბებთან და დაეხმარება მათ ჩართულობას სხვადასხვა აქტივობებში.
+            </p>
+        </div>
+    </div>
+</article>
+
+{% endblock %}
