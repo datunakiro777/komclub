@@ -178,7 +178,7 @@ footer
     <ul class="right-nav">
       {% if user.is_authenticated %}
       <li class="l">
-        <a href="" class=""><img src={{user.pfp}}></a>
+        <a href="" class=""><img src="{{user.pfp.url}}"></a>
       </li>
       {% else %}
         <li class="l">

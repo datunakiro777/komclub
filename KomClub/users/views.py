@@ -3,8 +3,6 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from .forms import UserInfoForm, LoginForm
 from .models import User_info  # Ensure your model includes 'last_name'
-
-
 def registration(request):
     if request.method == 'POST':
         form = UserInfoForm(request.POST)
@@ -14,11 +12,9 @@ def registration(request):
             user.last_name = form.cleaned_data['last_name']  # Save the last name
             user.save()
             messages.success(request, "Registration successful!")
-            
             return redirect('/')
     else:
         form = UserInfoForm()
-
     return render(request, 'registration.html', {'form': form})
 
 def login_view(request):
