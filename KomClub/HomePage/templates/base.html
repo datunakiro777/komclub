@@ -177,9 +177,12 @@ footer
     </ul>
     <ul class="right-nav">
       {% if user.is_authenticated %}
-      <li class="l">
-        <a href="" class=""><img src="{{user.pfp.url}}"></a>
-      </li>
+        <li class="l">
+            <button href="{% url 'logout' %}" class="btn btn-danger">Log Out</button>
+            </li>
+        <li class="l">
+            <a href="" class=""><img src="{{user.pfp}}"></a>
+        </li>
       {% else %}
         <li class="l">
             <a href="/register" class="bt al q nav-link">Register</a>
