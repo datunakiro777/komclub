@@ -6,69 +6,6 @@ Home
 {% endblock %}
 
 {% block body %}
-<style>
-    article
-    {
-        display:flex;
-        align-items: center;
-        justify-content: center;
-    }
-    .logo
-    {
-        display: block;
-        margin: 0 auto;
-        transition: filter 0.3s ease;
-    }
-    .logo:hover {
-        filter: brightness(1.2);
-    }
-    .container {
-    width: 50%;
-    color: rgb(0, 0, 0);
-    border-style: dashed;
-    text-align: center;
-    border-color: #703cc8;
-    border-width: 3px;
-    border-radius: 10px;
-    padding: 20px;
-    margin: 5px;
-}
-.section {
-    margin-bottom: 20px;
-    padding: 10px;
-}
-
-.section-title {
-    font-size: 20px;
-    color: #703cc8;
-    margin-bottom: 10px;
-    font-weight: bold;
-    text-align: left;
-}
-
-.section p {
-    text-align: left;
-    line-height: 1.6;
-    font-size: 16px;
-}
-
-.logo-container {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.logo {
-    display: block;
-    margin: 0 auto;
-    transition: filter 0.3s ease;
-}
-
-.logo:hover {
-    filter: brightness(1.2);
-}
-
-</style>
-
 <article>
     <div class="logo-container">
         <img src="static/images/logo.png" class="logo">
