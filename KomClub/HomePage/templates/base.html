@@ -178,7 +178,7 @@ footer
     <ul class="right-nav">
       {% if user.is_authenticated %}
         <li class="l">
-            <button href="{% url 'logout' %}" class="btn btn-danger">Log Out</button>
+            <button class="btn btn-danger"><a href="/logout">Log Out</a></button>
             </li>
         <li class="l">
             <a href="" class=""><img src="{{user.pfp}}"></a>
@@ -203,7 +203,7 @@ footer
     <a class="contact">Contact us</a>
     <div class="divider"></div>
     <img class="appicon" src="../../static/images/instagram.png" href="#">
-    <img class="appicon" src="static/images/facebook.png" href="#">
+    <img class="appicon" src="../../static/images/facebook.png" href="#">
   </footer>
 </body>
 </html>
