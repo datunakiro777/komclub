@@ -43,7 +43,49 @@
     font-weight: bold;
     text-align: left;
 }
+@media (max-width: 1024px) {
+    .container {
+        width: 70%;
+    }
 
+    .logo {
+        width: 120px;
+    }
+
+    .section-title {
+        font-size: 18px;
+    }
+}
+
+/* Styles for mobile phones (less than 768px) */
+@media (max-width: 768px) {
+    .navigation {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .container {
+        width: 90%;
+    }
+
+    .logo {
+        width: 100px;
+    }
+
+    .section-title {
+        font-size: 16px;
+    }
+
+    .left-nav, .right-nav {
+        flex-direction: column;
+        width: 100%;
+        padding: 10px 0;
+    }
+
+    li {
+        margin: 5px 0;
+    }
+}
 .section p {
     text-align: left;
     line-height: 1.6;
@@ -202,6 +244,17 @@ footer
     width: 100%;
     text-align: center;
     padding-top:10px;
+    position:absolute;
+    bottom:0;
+}
+.page-container
+{
+    position:relative;
+    min-height:100vh;
+}
+.content-wrap
+{
+    padding-bottom: 7rem;
 }
 .appicon
 {
@@ -214,6 +267,8 @@ footer
     {% endblock %}
 </head>
 <body>
+<div class="page-container">
+    <div class="content-wrap">
  <nav class="navigation">
     <ul class="left-nav">
         <li class="bt bigfont l">
@@ -265,5 +320,7 @@ footer
     <img class="appicon" src="../../static/images/instagram.png" href="#">
     <img class="appicon" src="../../static/images/facebook.png" href="#">
   </footer>
+  </div>
+</div>
 </body>
 </html>
