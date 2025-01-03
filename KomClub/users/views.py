@@ -7,7 +7,7 @@ from django.http import HttpResponse
 
 def register(request):
     user_id = request.session.get('user_id')
-    if request.user.is_authenticated:
+    if user_id:
         return redirect('/')
     
     else:
@@ -23,8 +23,10 @@ def register(request):
 
 
 def login(request):
+    user_registered = None
     user_id = request.session.get('user_id')
-    if request.user.is_authenticated:
+    if user_id:
+        user_registered = True
         return redirect('/')
 
     elif request.method == 'POST':
@@ -35,9 +37,10 @@ def login(request):
             gmail = form.cleaned_data['gmail']
 
             try:
-                user = User_info.objects.filter(gmail=gmail, password=password)
-                if check_password(password, user.password):
+                user = User_info.objects.get(gmail=gmail)
+                if password == user.password:
                     request.session['user_id'] = user.id
+                    user_registered = True
                     return redirect('/')
                 else:
                     return HttpResponse('Invalid username or password')
@@ -46,8 +49,9 @@ def login(request):
 
     else:
         form = LoginForm()
+        user_registered = False
 
-    return render(request, 'login.html', {'form': form})
+    return render(request, 'login.html', {'form': form, 'user_id' : user_id, 'user_registered' : user_registered})
 
 
 def logout_view(request):

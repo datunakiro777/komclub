@@ -236,7 +236,7 @@ footer
         </li>
     </ul>
     <ul class="right-nav">
-      {% if user.is_authenticated %}
+      {% if user_registered == True %}
         <li class="l">
             <button class="btn btn-danger"><a href="/logout">Log Out</a></button>
             </li>
