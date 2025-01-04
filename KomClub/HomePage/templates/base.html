@@ -291,22 +291,21 @@ footer
         </li>
     </ul>
     <ul class="right-nav">
-      {% if user_registered == True %}
+    {% if request.session.user_id %}
         <li class="l">
             <button class="btn btn-danger"><a href="/logout">Log Out</a></button>
-            </li>
-        <li class="l">
-            <a href="" class=""><img src="{{user.pfp}}"></a>
         </li>
-      {% else %}
+        <li class="l">
+            <a href="" class=""><img src=""></a>
+        </li>
+    {% else %}
         <li class="l">
             <a href="/register" class="bt al q nav-link">Register</a>
         </li>
         <li class="l">
             <a href="/login" class="bt al q nav-link">Login</a>
         </li>
-        
-      {% endif %}
+    {% endif %}
     </ul>
     
 </nav>
