@@ -40,6 +40,7 @@ def login(request):
                 user = User_info.objects.get(gmail=gmail)
                 if password == user.password:
                     request.session['user_id'] = user.id
+                    request.session['username'] = user.username
                     user_registered = True
                     return redirect('/')
                 else:
