@@ -52,6 +52,10 @@ text-align: left;
 
 /* Styles for mobile phones (less than 768px) */
 @media (max-width: 768px) {
+.club-description
+{
+    font-size:14px;
+}
 .navigation {
     flex-direction: column;
     align-items: flex-start;
@@ -165,11 +169,6 @@ display: block;
 .q {
 padding-top: 13.5px;
 }
-.nav-link.active {
-background-color: #ff9900;
-border-radius: 5px;
-font-weight: bold;
-}
 .nav-link:hover {
 background-color: #703cc8;
 border-radius: 5px;
@@ -219,6 +218,64 @@ transition: color 0.3s ease;
 {
 color:rgb(255, 220, 251);
 }
+.joinbutton {
+    background-color: #703cc8; 
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    display: block;
+    white-space: nowrap;
+    transition: background-color 0.3s ease, font-size 0.3s ease;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-top: auto;
+}
+.club-author
+{
+    margin:5px;
+    color:#2cb4e4;
+}
+.joinbutton:hover {
+    background-color: #2cb4e4; 
+    font-size: 17px;
+    cursor: pointer;
+}
+
+.container2 {
+    
+    width: 30%;
+    height: 400px; 
+    color: rgb(0, 0, 0);
+    border-style:solid;
+    text-align: center;
+    border-color: #703cc8;
+    border-width: 3px;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 5px;
+    box-sizing: border-box;
+    display: flex; 
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+.club-title
+    {
+        color:#703cc8;
+        font-size:20px;
+    }
+    .content {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    @media (max-width: 800px) {
+        .container2 {
+            width: 100%; 
+        }
+    }
 .divider
 {
 background-color: #7c44dd;
@@ -228,6 +285,18 @@ border-style:solid;
 border-width:1px;
 border-radius: 50px;
 width:50%;
+
+}
+.divider2
+{
+background-color: #7c44dd;
+margin: 0 auto;
+border-color:#703cc8;
+border-style:solid;
+border-width:1px;
+border-radius: 50px;
+padding:0;
+width:70%;
 
 }
 footer
