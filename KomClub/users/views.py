@@ -51,11 +51,11 @@ def login(request):
     else:
         form = LoginForm()
         user_registered = False
-
     return render(request, 'login.html', {'form': form, 'user_id' : user_id, 'user_registered' : user_registered})
 
 
 def logout_view(request):
     logout(request)
+    request.session.flush()
     return redirect('/') 
             

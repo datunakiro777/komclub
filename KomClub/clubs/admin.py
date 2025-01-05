@@ -1,3 +1,4 @@
 from django.contrib import admin
+from clubs.models import Clubs_info
 
-# Register your models here.
+admin.site.register(Clubs_info)
