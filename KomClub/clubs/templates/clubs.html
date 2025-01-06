@@ -8,75 +8,20 @@ Clubs
 
 {% block body %}
 <div class="content">
+    {% for club in clubs %}
     <div class="container2">
         <p class="club-title">
-            ვაშლების ჭამის კლუბი
+            {{club.name}}
         </p>
         <div class="divider2"></div>
         <p class="club-description" id="club-description">
-            კლუბი არის განკუთვნილი ვისაც ვაშლები უყვარს
+            {{club.description}}
         </p>
-        <a class="joinbutton">გაწევრიანება</a>
+        <a class="joinbutton" href="/join_club">გაწევრიანება</a>
         <p class="club-author" id="club-author">
-            Teacher: Datuna Papidze
+            Teacher: {{club.owner}}
         </p>
     </div>
-    <div class="container2">
-        <p class="club-title">
-            club2
-        </p>
-        <div class="divider2"></div>
-        <p class="club-description" id="club-description">
-            ეჯრგ[ქეო გეროიგჰქე იგექირ გიქუე გჰიქეგ ქიერ გჰქიეურ გიქეჰ გქიუერჰგუიქე ჰგიქე რირქგ რ ქგქგჰუქერჰ გუქე რგქჰ რქ ეუქგ ირუქ იგეუექ ჰრგიქრუეჰ
-        </p>
-        <a class="joinbutton">გაწევრიანება</a>
-        <p class="club-author" id="club-author">
-            Teacher: Datuna Papidze
-        </p>
-    </div>
-    <div class="container2">
-        <p class="club-title">
-            პროგრამირების კლუბი
-        </p>
-        <div class="divider2"></div>
-        <p class="club-description" id="club-description">
-            კლუბში მონაწილეები განავითარებენ მათ კოდირების უნარებს, ქმნიან სხვადასხვა ტიპის აპლიკაციებს, თამაშებს და ვებ-გვერდებს. ჩვენ გთავაზობთ ხელმისაწვდომ საგანმანათლებლო გარემოს, სადაც ნებისმიერი დონეს მიტანილი სტუდენტები შეძლებენ მიიღონ ახალი ცოდნა, განახორციელონ საკუთარი იდეები და გაზიარონ გამოცდილება. კლუბი ხელს უწყობს გუნდურ მუშაობას და პროექტებზე თანამშრომლობას.
-
-        </p>
-        <a class="joinbutton">გაწევრიანება</a>
-        <p class="club-author" id="club-author">
-            Teacher: Datuna Papidze
-        </p>
-    </div>
-    <div class="container2">
-        <p class="club-title">
-            პროგრამირების კლუბი
-        </p>
-        <div class="divider2"></div>
-        <p class="club-description" id="club-description">
-            კლუბში მონაწილეები განავითარებენ მათ კოდირების უნარებს, ქმნიან სხვადასხვა ტიპის აპლიკაციებს, თამაშებს და ვებ-გვერდებს. ჩვენ გთავაზობთ ხელმისაწვდომ საგანმანათლებლო გარემოს, სადაც ნებისმიერი დონეს მიტანილი სტუდენტები შეძლებენ მიიღონ ახალი ცოდნა, განახორციელონ საკუთარი იდეები და გაზიარონ გამოცდილება. კლუბი ხელს უწყობს გუნდურ მუშაობას და პროექტებზე თანამშრომლობას.
-
-        </p>
-        <a class="joinbutton">გაწევრიანება</a>
-        <p class="club-author" id="club-author">
-            Teacher: Datuna Papidze
-        </p>
-
-    </div>
-    <div class="container2">
-        <p class="club-title">
-            პროგრამირების კლუბი
-        </p>
-        <div class="divider2"></div>
-        <p class="club-description" id="club-description">
-            კლუბში მონაწილეები განავითარებენ მათ კოდირების უნარებს, ქმნიან სხვადასხვა ტიპის აპლიკაციებს, თამაშებს და ვებ-გვერდებს. ჩვენ გთავაზობთ ხელმისაწვდომ საგანმანათლებლო გარემოს, სადაც ნებისმიერი დონეს მიტანილი სტუდენტები შეძლებენ მიიღონ ახალი ცოდნა, განახორციელონ საკუთარი იდეები და გაზიარონ გამოცდილება. კლუბი ხელს უწყობს გუნდურ მუშაობას და პროექტებზე თანამშრომლობას.
-
-        </p>
-        <a class="joinbutton">გაწევრიანება</a>
-        <p class="club-author" id="club-author">
-            Teacher: Datuna Papidze
-        </p>
-        
-    </div>
+    {% endfor %}
 </div>
 {% endblock %}
