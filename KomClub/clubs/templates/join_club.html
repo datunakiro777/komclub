@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block head %}
+{% endblock %}
+{% block body %}
+<div class="form-container">
+    <form method="post" action="">
+        {% csrf_token %}
+        <div class="form-group">
+            {{ form.as_p }}
+        </div>
+        <button type="submit">Join Club</button>
+    </form>
+</div>
+{% endblock %}

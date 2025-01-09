@@ -1,8 +1,9 @@
 from django.shortcuts import render
-from clubs.forms import ClubsForm
+from clubs.forms import ClubsForm, JoinClubForm
 from django.shortcuts import redirect
 from clubs.models import Clubs_info
 from users.models import User_info
+from django.http import HttpResponse
 
 def clubs(request):
     user_id = request.session.get('user_id')
@@ -40,5 +41,20 @@ def create_club(request):
     return render(request, 'create_club.html', {'form': form})
 
 def join_club(request):
-    
-    return redirect('/my_clubs')
+    form = JoinClubForm()
+    user_id = request.session.get('user_id')
+    if user_id:
+        if request.method == 'POST':
+            form = JoinClubForm(request.POST)
+            if form.is_valid():
+                name = form.cleaned_data['name']
+                username = request.session.get('username')
+                try:
+                    club = Clubs_info.objects.get(name=name)
+                    club.members.add(user_id) 
+                    return redirect('/my_clubs')
+                except:
+                    return HttpResponse('could not find a club')
+    else:
+        return redirect('/login')
+    return render(request, 'join_club.html', {'form': form})

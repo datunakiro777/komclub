@@ -7,4 +7,4 @@ class Clubs_info(models.Model):
     members = models.ManyToManyField('users.User_info', related_name='clubs', blank=True)
     owner = models.ForeignKey('users.User_info', related_name='owned_clubs', on_delete=models.CASCADE, default=1)
     def __str__(self):
-        return self.name
+        return self.name    
