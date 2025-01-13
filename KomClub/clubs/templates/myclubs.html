@@ -17,7 +17,7 @@ My Clubs
         <p class="club-description" id="club-description">
             {{club.description}}
         </p>
-        <a class="joinbutton">club page</a>
+        <a class="joinbutton" href="{% url 'club_detail' slug=club.slug %}">club page</a>
         <p class="club-author" id="club-author">
             Teacher: {{club.owner}}
         </p>

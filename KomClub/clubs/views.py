@@ -58,3 +58,10 @@ def join_club(request):
     else:
         return redirect('/login')
     return render(request, 'join_club.html', {'form': form})
+
+def club_detail(request, slug):
+    if request.session.get('user_id'):
+        club = Clubs_info.objects.get(slug=slug)
+    else:
+        return redirect('/login')
+    return render(request, 'club_detail.html', {'club' : club})
