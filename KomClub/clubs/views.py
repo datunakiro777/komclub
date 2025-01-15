@@ -40,25 +40,14 @@ def create_club(request):
     form = ClubsForm()
     return render(request, 'create_club.html', {'form': form})
 
-def join_club(request):
-    form = JoinClubForm()
+def join_club(request, club_id):
     user_id = request.session.get('user_id')
     if user_id:
-        if request.method == 'POST':
-            form = JoinClubForm(request.POST)
-            if form.is_valid():
-                name = form.cleaned_data['name']
-                username = request.session.get('username')
-                try:
-                    club = Clubs_info.objects.get(name=name)
-                    club.members.add(user_id) 
-                    return redirect('/my_clubs')
-                except:
-                    return HttpResponse('could not find a club')
+        club = Clubs_info.objects.get(id=club_id)
+        club.members.add(user_id)
+        return redirect('/my_clubs')
     else:
-        return redirect('/login')
-    return render(request, 'join_club.html', {'form': form})
-
+        redirect('/login')
 def club_detail(request, slug):
     if request.session.get('user_id'):
         club = Clubs_info.objects.get(slug=slug)

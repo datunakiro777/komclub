@@ -17,7 +17,7 @@ Clubs
         <p class="club-description" id="club-description">
             {{club.description}}
         </p>
-        <a class="joinbutton" href="/join_club">გაწევრიანება</a>
+        <a class="joinbutton" href="{% url 'join_club' club_id=club.id %}">გაწევრიანება</a>
         <p class="club-author" id="club-author">
             Teacher: {{club.owner}}
         </p>
