@@ -5,4 +5,5 @@
 {% block body %}
 {{club.name}}
 {{club.description}}
+<button><a href="{% url 'leave_club' club_id=club.id %}">Leave Club</a></button>
 {% endblock %}

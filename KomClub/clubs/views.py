@@ -54,3 +54,9 @@ def club_detail(request, slug):
     else:
         return redirect('/login')
     return render(request, 'club_detail.html', {'club' : club})
+
+def leave_club(request, club_id):
+    club = Clubs_info.objects.get(id=club_id)
+    user_id = request.session.get('user_id')
+    club.members.remove(user_id)
+    return redirect('/my_clubs')
