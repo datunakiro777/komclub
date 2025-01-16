@@ -1,9 +1,232 @@
-{% extends 'base.html'%}
+{% extends 'base.html' %}
 {% block head %}
+<style>
+.club-container {
+    width: 80%;
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 2rem;
+    padding-bottom:0;
+    border: 3px dashed #703cc8;
+    border-radius: 10px;
+}
 
+.club-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.club-name {
+    color: #703cc8;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.club-meta {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.member-count {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background-color: #f0e6ff;
+    border-radius: 20px;
+    color: #703cc8;
+}
+
+.club-description {
+    line-height: 1.6;
+    text-align: left;
+    font-size: 16px;
+    margin-bottom: 2rem;
+}
+
+.club-actions {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.leave-club-btn {
+    display: inline-block;
+    background-color: #2cb4e4;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-family: Verdana, sans-serif;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top:10px;
+    margin-bottom:0;
+}
+
+.leave-club-btn:hover {
+    background-color: #703cc8;
+    transform: translateY(-2px);
+}
+
+/* Comments Section */
+.comments-section {
+    margin-top: 3rem;
+    border-top: 2px solid #e5e7eb;
+    padding-top: 2rem;
+}
+
+.comments-header {
+    color: #703cc8;
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    font-weight: bold;
+}
+
+.comment-form {
+    margin-bottom: 2rem;
+}
+
+.comment-input {
+        width: 100%;
+        border: 2px solid #e5e7eb;
+        border-radius: 8px;
+        margin-bottom: 1rem;
+        resize: vertical;
+        min-height: 100px;
+        transition: border-color 0.3s ease;
+}
+
+.comment-input:focus {
+    outline: none;
+    border-color: #703cc8;
+}
+
+.comment-submit {
+    background-color: #703cc8;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.comment-submit:hover {
+    background-color: #2cb4e4;
+}
+
+.comments-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.comment {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    padding: 1.5rem;
+}
+
+.comment-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+
+.comment-author {
+    font-weight: bold;
+    color: #703cc8;
+}
+
+.comment-date {
+    color: #6b7280;
+    font-size: 0.875rem;
+}
+
+.comment-content {
+    color: #374151;
+    line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+    .club-container {
+        width: 90%;
+        padding: 1rem;
+    }
+    
+    .club-name {
+        font-size: 20px;
+    }
+    
+    .club-description {
+        font-size: 14px;
+    }
+    
+    .member-count {
+        font-size: 0.8rem;
+    }
+    
+    .comment {
+        padding: 1rem;
+    }
+}
+</style>
 {% endblock %}
+
 {% block body %}
-{{club.name}}
-{{club.description}}
-<button><a href="{% url 'leave_club' club_id=club.id %}">Leave Club</a></button>
+<div class="club-container">
+    <div class="club-header">
+        <h1 class="club-name">{{ club.name }}</h1>
+        <div class="club-meta">
+            <div class="member-count">
+                👥 {{ club.member_count|default:"0" }} Members
+            </div>
+        </div>
+    </div>
+   
+    <div class="club-description">
+        {{ club.description }}
+    </div>
+
+    <div class="comments-section">
+        <h2 class="comments-header">Comments</h2>
+        
+        <form class="comment-form">
+            <textarea class="comment-input" placeholder="აქ შეგიძლია დაწერო კომენტარი..."></textarea>
+            <button type="submit" class="comment-submit">Post Comment</button>
+        </form>
+
+        <div class="comments-list">
+            <div class="comment">
+                <div class="comment-header">
+                    <span class="comment-author">user1</span>
+                    <span class="comment-date">2 hours ago</span>
+                </div>
+                <div class="comment-content">
+                    zdarova
+                </div>
+            </div>
+            
+            <div class="comment">
+                <div class="comment-header">
+                    <span class="comment-author">user2</span>
+                    <span class="comment-date">5 hours ago</span>
+                </div>
+                <div class="comment-content">
+                    zdarova dzmebs
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="club-actions">
+        <a href="{% url 'leave_club' club_id=club.id %}" class="leave-club-btn">
+            Leave Club
+        </a>
+    </div>
+</div>
 {% endblock %}
