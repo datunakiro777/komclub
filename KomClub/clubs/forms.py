@@ -1,15 +1,20 @@
 from django import forms
-from clubs.models import Clubs_info
+from clubs.models import Clubs_info, Comments
 
 class ClubsForm(forms.ModelForm):
     class Meta:
         model = Clubs_info
         fields = ['name', 'description']
 
-class JoinClubForm(forms.Form):
-    name = forms.CharField(
-        max_length=30,
-        label='Club Name',
-        widget=forms.TextInput(attrs={'placeholder': 'Enter club name'}),
-    )
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comments
+        fields = ['text']
+        widgets = {
+            'text': forms.Textarea(attrs={
+                'class': 'comment-input',
+                'placeholder': 'აქ შეგიძლია დაწერო კომენტარი...',
+                'rows': 3,
+            }),
+        }
     

@@ -16,3 +16,15 @@ class Clubs_info(models.Model):
 
     def __str__(self):
         return self.name
+    
+class Comments(models.Model):
+    user = models.ForeignKey('users.User_info', related_name='comments', on_delete=models.CASCADE, default='1')
+    club = models.ForeignKey('clubs.Clubs_info', related_name='club_comments', on_delete=models.CASCADE, default=1)
+    text = models.TextField()
+    create_time = models.DateTimeField(auto_now_add=True)
+    
+    class Meta:
+        ordering = ['-create_time']
+
+    def __str__(self):
+        return self.text

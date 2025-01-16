@@ -184,7 +184,7 @@
         <h1 class="club-name">{{ club.name }}</h1>
         <div class="club-meta">
             <div class="member-count">
-                👥 {{ club.member_count|default:"0" }} Members
+                👥 {{ members_count.members_count|default:"0" }} Members
             </div>
         </div>
     </div>
@@ -196,31 +196,24 @@
     <div class="comments-section">
         <h2 class="comments-header">Comments</h2>
         
-        <form class="comment-form">
-            <textarea class="comment-input" placeholder="აქ შეგიძლია დაწერო კომენტარი..."></textarea>
-            <button type="submit" class="comment-submit">Post Comment</button>
+        <form method="post" class="comment-form">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="comment-submit">Comment</button>
         </form>
-
+    
         <div class="comments-list">
+            {% for comment in comments %}
             <div class="comment">
                 <div class="comment-header">
-                    <span class="comment-author">user1</span>
-                    <span class="comment-date">2 hours ago</span>
+                    <span class="comment-author">{{comment.user}}</span>
+                    <span class="comment-date">{{comment.create_time}}</span>
                 </div>
                 <div class="comment-content">
-                    zdarova
+                    {{comment.text}}
                 </div>
             </div>
-            
-            <div class="comment">
-                <div class="comment-header">
-                    <span class="comment-author">user2</span>
-                    <span class="comment-date">5 hours ago</span>
-                </div>
-                <div class="comment-content">
-                    zdarova dzmebs
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </div>
     <div class="club-actions">

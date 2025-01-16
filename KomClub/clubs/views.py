@@ -1,9 +1,10 @@
 from django.shortcuts import render
-from clubs.forms import ClubsForm, JoinClubForm
+from clubs.forms import ClubsForm, CommentForm
 from django.shortcuts import redirect
-from clubs.models import Clubs_info
+from clubs.models import Clubs_info, Comments
 from users.models import User_info
 from django.http import HttpResponse
+from django.db.models import Count
 
 def clubs(request):
     user_id = request.session.get('user_id')
@@ -48,15 +49,30 @@ def join_club(request, club_id):
         return redirect('/my_clubs')
     else:
         redirect('/login')
+
+
 def club_detail(request, slug):
-    if request.session.get('user_id'):
+    user_id = request.session.get('user_id')
+    if user_id:
+        comments = Comments.objects.all()
         club = Clubs_info.objects.get(slug=slug)
+        form = CommentForm()
+        members_count = club.members.aggregate(members_count=Count('id'))
+        if request.method == 'POST':
+            form = CommentForm(request.POST)
+            if form.is_valid():
+                form.save()
+                text = form.cleaned_data['text']
+                Comments.objects.filter(text=text).update(user=user_id)
     else:
         return redirect('/login')
-    return render(request, 'club_detail.html', {'club' : club})
+    return render(request, 'club_detail.html', {'club' : club, 'members_count' : members_count, 'form' : form, 'comments': comments})
+
 
 def leave_club(request, club_id):
     club = Clubs_info.objects.get(id=club_id)
     user_id = request.session.get('user_id')
     club.members.remove(user_id)
     return redirect('/my_clubs')
+
+    
