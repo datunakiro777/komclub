@@ -45,8 +45,11 @@ def join_club(request, club_id):
     user_id = request.session.get('user_id')
     if user_id:
         club = Clubs_info.objects.get(id=club_id)
-        club.members.add(user_id)
-        return redirect('/my_clubs')
+        if club.members.filter(id=user_id).exists():
+            return HttpResponse('already joined')
+        else:
+            club.members.add(user_id)
+            return redirect('/my_clubs')
     else:
         redirect('/login')
 
@@ -54,8 +57,8 @@ def join_club(request, club_id):
 def club_detail(request, slug):
     user_id = request.session.get('user_id')
     if user_id:
-        comments = Comments.objects.all()
         club = Clubs_info.objects.get(slug=slug)
+        comments = club.club_comments.all()
         form = CommentForm()
         members_count = club.members.aggregate(members_count=Count('id'))
         if request.method == 'POST':

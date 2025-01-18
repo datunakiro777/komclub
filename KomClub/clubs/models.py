@@ -19,7 +19,7 @@ class Clubs_info(models.Model):
     
 class Comments(models.Model):
     user = models.ForeignKey('users.User_info', related_name='comments', on_delete=models.CASCADE, default='1')
-    club = models.ForeignKey('clubs.Clubs_info', related_name='club_comments', on_delete=models.CASCADE, default=1)
+    club = models.ForeignKey('clubs.Clubs_info', related_name='club_comments', on_delete=models.CASCADE, default='1')
     text = models.TextField()
     create_time = models.DateTimeField(auto_now_add=True)
     
