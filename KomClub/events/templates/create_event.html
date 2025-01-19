@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% block head %}
+<style>
+    textarea
+    {
+        resize:none;
+    }
+    /* General form styles */
+    form {
+        background-color: #f3f0ff; /* Light purple background */
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        max-width: 400px;
+        margin: 30px auto;
+    }
+
+    /* Input field styles */
+    input[type="text"], input[type="email"], input[type="password"], select, textarea {
+        width: 100%;
+        padding: 10px;
+        border: 2px solid #a27ce6; /* Purple border */
+        border-radius: 5px;
+        background-color: #ffffff;
+        color: #333;
+        font-size: 16px;
+        margin-bottom: 20px;
+        box-sizing: border-box;
+    }
+
+    input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus, select:focus, textarea:focus {
+        border-color: #8c52ff; /* Brighter purple on focus */
+        outline: none;
+        box-shadow: 0 0 5px rgba(140, 82, 255, 0.3); /* Purple glow on focus */
+    }
+
+    /* Submit button */
+    button[type="submit"] {
+        background-color: #7c44dd; 
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    button[type="submit"]:hover {
+        background-color: #2cb4e4;
+    }
+
+    /* Form labels */
+    label {
+        font-weight: bold;
+        color: #7c44dd;
+    }
+
+    /* Form wrapper */
+    .form-container {
+        text-align: center;
+    }
+
+    /* Add some spacing between form and submit button */
+    .form-group {
+        margin-bottom: 15px;
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+<div class="form-container">
+    <form method="post" action="">
+        {% csrf_token %}
+        <div class="form-group">
+            {{ form.as_p }}
+        </div>
+        <button type="submit">Create Event</button>
+    </form>
+</div>
+{% endblock %}

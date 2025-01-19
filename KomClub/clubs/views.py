@@ -5,6 +5,7 @@ from clubs.models import Clubs_info, Comments
 from users.models import User_info
 from django.http import HttpResponse
 from django.db.models import Count
+import datetime
 
 def clubs(request):
     user_id = request.session.get('user_id')
