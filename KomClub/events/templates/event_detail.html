@@ -4,5 +4,18 @@
 {% endblock %}
 
 {% block body %}
-
+{% if  is_participant %}
+    {{event.name}}
+    {{event.description}}
+    {{event.rules}}
+    {{event.last_date}}
+    {{ participant_count }}
+{% else %}
+    {{event.name}}
+    {{event.description}}
+    {{event.rules}}
+    {{event.last_date}}
+    {{ participant_count }}
+    <button><a href="{% url 'join_event' id=event.id %}">join contest</a></button>
+{% endif %}
 {% endblock %}

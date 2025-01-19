@@ -14,7 +14,7 @@
         <p class="club-description" id="club-description">
             {{event.description}}
         </p>
-        <a class="joinbutton" href="{% url 'club_detail' slug=event.slug %}">view contest</a>
+        <a class="joinbutton" href="{% url 'event_detail' slug=event.slug %}">view contest</a>
         <p class="club-author" id="club-author">
             last date: {{event.last_date}}
         </p>

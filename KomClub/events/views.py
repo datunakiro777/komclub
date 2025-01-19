@@ -32,4 +32,24 @@ def create_event(request):
     return render(request, 'create_event.html', {'form' : form})
 
 def event_detail(request, slug):
-    return render(request, 'event_detail.html')
+    user_id = request.session.get('user_id')
+    if user_id:
+        
+        event = Events.objects.get(slug=slug)
+        is_participant = event.participants.filter(id=user_id).exists()
+        participant_count = event.participants.count()
+    else:
+        return redirect('/login')
+    return render(request, 'event_detail.html', {'event' : event, 'is_participant': is_participant, 'participant_count' : participant_count})
+
+def join_event(request, id):
+    user_id = request.session.get('user_id')
+    if user_id:
+        event = Events.objects.get(id=id)
+        if event.participants.filter(id=user_id).exists():
+            return HttpResponse('already in event')
+        else:
+            event.participants.add(user_id)
+            return redirect('/')
+    else:
+        return redirect('/login')
